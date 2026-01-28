@@ -9,18 +9,19 @@ import {
   parseCustomKanjiList,
   isKanjiInData
 } from './kanjiUtils';
+import kanjiData from '../data/kanjiData';
 
 describe('kanjiUtils', () => {
   describe('getNextKanji', () => {
     it('returns the first kanji when nothing is learned', () => {
       const result = getNextKanji([], []);
       expect(result).toBeDefined();
-      expect(result.character).toBe('日');
+      expect(result.character).toBe(kanjiData[0].character);
     });
 
     it('skips already learned kanji', () => {
       const result = getNextKanji(['日'], []);
-      expect(result.character).toBe('一');
+      expect(result.character).toBe(kanjiData[0].character);
     });
 
     it('prioritizes custom kanji list', () => {
@@ -35,7 +36,7 @@ describe('kanjiUtils', () => {
 
     it('falls back to frequency list when custom list is exhausted', () => {
       const result = getNextKanji(['食', '水'], ['食', '水']);
-      expect(result.character).toBe('日');
+      expect(result.character).toBe('一');
     });
 
     it('returns null when all kanji are learned', () => {
@@ -111,11 +112,11 @@ describe('kanjiUtils', () => {
       expect(correctOptions[0].value).toBe('correct');
     });
 
-    it('includes all distractors', () => {
-      const distractors = ['wrong1', 'wrong2', 'wrong3'];
-      const result = getQuizOptions('correct', distractors);
+    it('includes all incorrectAnswers', () => {
+      const incorrectAnswers = ['wrong1', 'wrong2', 'wrong3'];
+      const result = getQuizOptions('correct', incorrectAnswers);
       const incorrectOptions = result.filter(o => !o.isCorrect).map(o => o.value);
-      expect(incorrectOptions.sort()).toEqual(distractors.sort());
+      expect(incorrectOptions.sort()).toEqual(incorrectAnswers.sort());
     });
   });
 

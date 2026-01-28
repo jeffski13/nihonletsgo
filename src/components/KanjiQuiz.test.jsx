@@ -9,7 +9,7 @@ const mockKanji = {
     word: '食べる',
     reading: 'たべる',
     meaning: 'to eat',
-    distractors: ['to drink', 'to sleep', 'to walk']
+    incorrectAnswers: ['to drink', 'to sleep', 'to walk']
   },
   example: {
     sentence: 'ごはんを食べる',

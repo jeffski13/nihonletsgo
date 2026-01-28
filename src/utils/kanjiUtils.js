@@ -64,15 +64,15 @@ export function shuffleArray(array) {
 }
 
 /**
- * Get quiz options (1 correct answer + 3 distractors) in random order
+ * Get quiz options (1 correct answer + 3 incorrectAnswers) in random order
  * @param {string} correctAnswer - The correct answer
- * @param {string[]} distractors - Array of distractor options
+ * @param {string[]} incorrectAnswers - Array of distractor options
  * @returns {object[]} - Array of option objects with value and isCorrect
  */
-export function getQuizOptions(correctAnswer, distractors) {
+export function getQuizOptions(correctAnswer, incorrectAnswers) {
   const options = [
     { value: correctAnswer, isCorrect: true },
-    ...distractors.map(d => ({ value: d, isCorrect: false }))
+    ...incorrectAnswers.map(d => ({ value: d, isCorrect: false }))
   ];
   return shuffleArray(options);
 }
@@ -121,25 +121,25 @@ export function isKanjiInData(character) {
 
 /**
  * Get pronunciation quiz options (1 correct reading + 3 distractor readings) in random order
- * Uses characterReading (the reading of just the kanji character) for distractors
+ * Uses characterReading (the reading of just the kanji character) for incorrectAnswers
  * @param {string} correctReading - The correct hiragana reading of the kanji character
- * @param {string} currentCharacter - The current kanji character (to exclude from distractors)
+ * @param {string} currentCharacter - The current kanji character (to exclude from incorrectAnswers)
  * @returns {object[]} - Array of option objects with value and isCorrect
  */
 export function getPronunciationQuizOptions(correctReading, currentCharacter) {
-  // Get all other character readings from kanji data as potential distractors
+  // Get all other character readings from kanji data as potential incorrectAnswers
   const otherReadings = kanjiData
     .filter(k => k.character !== currentCharacter)
     .map(k => k.characterReading)
     .filter(reading => reading && reading !== correctReading);
 
-  // Shuffle and take 3 distractors
+  // Shuffle and take 3 incorrectAnswers
   const shuffledReadings = shuffleArray(otherReadings);
-  const distractors = shuffledReadings.slice(0, 3);
+  const incorrectAnswers = shuffledReadings.slice(0, 3);
 
   const options = [
     { value: correctReading, isCorrect: true },
-    ...distractors.map(d => ({ value: d, isCorrect: false }))
+    ...incorrectAnswers.map(d => ({ value: d, isCorrect: false }))
   ];
 
   return shuffleArray(options);

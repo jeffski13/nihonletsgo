@@ -10,8 +10,8 @@ function KanjiQuiz({ kanji, onCorrect }) {
 
   useEffect(() => {
     if (kanji) {
-      const { meaning, distractors } = kanji.vocabularyWord;
-      setOptions(getQuizOptions(meaning, distractors));
+      const { meaning, incorrectAnswers } = kanji.vocabularyWord;
+      setOptions(getQuizOptions(meaning, incorrectAnswers));
       setSelectedAnswer(null);
       setShowFeedback(false);
       setIsCorrect(false);
@@ -40,8 +40,8 @@ function KanjiQuiz({ kanji, onCorrect }) {
     setShowFeedback(false);
     setIsCorrect(false);
     // Reshuffle options on retry
-    const { meaning, distractors } = kanji.vocabularyWord;
-    setOptions(getQuizOptions(meaning, distractors));
+    const { meaning, incorrectAnswers } = kanji.vocabularyWord;
+    setOptions(getQuizOptions(meaning, incorrectAnswers));
   };
 
   return (

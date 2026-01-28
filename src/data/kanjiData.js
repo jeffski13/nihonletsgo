@@ -21,7 +21,7 @@ const kanjiData = [
       word: "一つ",
       reading: "ひとつ",
       meaning: "one (thing)",
-      distractors: ["two (things)", "three (things)", "many"]
+      incorrectAnswers: ["two (things)", "three (things)", "many"]
     },
     example: {
       sentence: "りんごを一つください",
@@ -41,7 +41,7 @@ const kanjiData = [
       word: "人",
       reading: "ひと",
       meaning: "person",
-      distractors: ["animal", "thing", "place"]
+      incorrectAnswers: ["animal", "thing", "place"]
     },
     example: {
       sentence: "あの人はだれですか",
@@ -63,7 +63,7 @@ const kanjiData = [
       word: "大きい",
       reading: "おおきい",
       meaning: "big",
-      distractors: ["small", "tall", "wide"]
+      incorrectAnswers: ["small", "tall", "wide"]
     },
     example: {
       sentence: "このいぬは大きいです",
@@ -84,7 +84,7 @@ const kanjiData = [
       word: "小さい",
       reading: "ちいさい",
       meaning: "small",
-      distractors: ["big", "tall", "wide"]
+      incorrectAnswers: ["big", "tall", "wide"]
     },
     example: {
       sentence: "小さいねこがいます",
@@ -104,7 +104,7 @@ const kanjiData = [
       word: "中",
       reading: "なか",
       meaning: "inside",
-      distractors: ["outside", "above", "below"]
+      incorrectAnswers: ["outside", "above", "below"]
     },
     example: {
       sentence: "かばんの中にあります",
@@ -125,7 +125,7 @@ const kanjiData = [
       word: "上",
       reading: "うえ",
       meaning: "above/on top",
-      distractors: ["below", "beside", "behind"]
+      incorrectAnswers: ["below", "beside", "behind"]
     },
     example: {
       sentence: "つくえの上にあります",
@@ -146,7 +146,7 @@ const kanjiData = [
       word: "下",
       reading: "した",
       meaning: "below/under",
-      distractors: ["above", "beside", "behind"]
+      incorrectAnswers: ["above", "beside", "behind"]
     },
     example: {
       sentence: "いすの下にねこがいます",
@@ -169,7 +169,7 @@ const kanjiData = [
       word: "出る",
       reading: "でる",
       meaning: "to exit/go out",
-      distractors: ["to enter", "to stay", "to return"]
+      incorrectAnswers: ["to enter", "to stay", "to return"]
     },
     example: {
       sentence: "へやを出る",
@@ -188,7 +188,7 @@ const kanjiData = [
       word: "入る",
       reading: "はいる",
       meaning: "to enter",
-      distractors: ["to exit", "to stay", "to return"]
+      incorrectAnswers: ["to exit", "to stay", "to return"]
     },
     example: {
       sentence: "へやに入る",
@@ -207,7 +207,7 @@ const kanjiData = [
       word: "本",
       reading: "ほん",
       meaning: "book",
-      distractors: ["magazine", "newspaper", "letter"]
+      incorrectAnswers: ["magazine", "newspaper", "letter"]
     },
     example: {
       sentence: "本をかいます",
@@ -226,7 +226,7 @@ const kanjiData = [
       word: "水",
       reading: "みず",
       meaning: "water",
-      distractors: ["tea", "juice", "milk"]
+      incorrectAnswers: ["tea", "juice", "milk"]
     },
     example: {
       sentence: "水をのみます",
@@ -245,7 +245,7 @@ const kanjiData = [
       word: "木",
       reading: "き",
       meaning: "tree",
-      distractors: ["flower", "grass", "leaf"]
+      incorrectAnswers: ["flower", "grass", "leaf"]
     },
     example: {
       sentence: "大きい木があります",
@@ -265,7 +265,7 @@ const kanjiData = [
       word: "お金",
       reading: "おかね",
       meaning: "money",
-      distractors: ["gold", "silver", "coin"]
+      incorrectAnswers: ["gold", "silver", "coin"]
     },
     example: {
       sentence: "お金がありません",
@@ -284,7 +284,7 @@ const kanjiData = [
       word: "今",
       reading: "いま",
       meaning: "now",
-      distractors: ["later", "before", "always"]
+      incorrectAnswers: ["later", "before", "always"]
     },
     example: {
       sentence: "今、なにをしていますか",
@@ -305,7 +305,7 @@ const kanjiData = [
       word: "何",
       reading: "なに",
       meaning: "what",
-      distractors: ["who", "where", "when"]
+      incorrectAnswers: ["who", "where", "when"]
     },
     example: {
       sentence: "これは何ですか",
@@ -328,7 +328,7 @@ const kanjiData = [
       word: "行く",
       reading: "いく",
       meaning: "to go",
-      distractors: ["to come", "to return", "to stay"]
+      incorrectAnswers: ["to come", "to return", "to stay"]
     },
     example: {
       sentence: "がっこうに行く",
@@ -347,7 +347,7 @@ const kanjiData = [
       word: "来る",
       reading: "くる",
       meaning: "to come",
-      distractors: ["to go", "to return", "to leave"]
+      incorrectAnswers: ["to go", "to return", "to leave"]
     },
     example: {
       sentence: "ともだちが来る",
@@ -366,7 +366,7 @@ const kanjiData = [
       word: "見る",
       reading: "みる",
       meaning: "to see/watch",
-      distractors: ["to hear", "to smell", "to touch"]
+      incorrectAnswers: ["to hear", "to smell", "to touch"]
     },
     example: {
       sentence: "テレビを見る",
@@ -385,7 +385,7 @@ const kanjiData = [
       word: "食べる",
       reading: "たべる",
       meaning: "to eat",
-      distractors: ["to drink", "to sleep", "to walk"]
+      incorrectAnswers: ["to drink", "to sleep", "to walk"]
     },
     example: {
       sentence: "ごはんを食べる",
@@ -404,7 +404,7 @@ const kanjiData = [
       word: "飲む",
       reading: "のむ",
       meaning: "to drink",
-      distractors: ["to eat", "to sleep", "to rest"]
+      incorrectAnswers: ["to eat", "to sleep", "to rest"]
     },
     example: {
       sentence: "おちゃを飲む",
@@ -423,7 +423,7 @@ const kanjiData = [
       word: "聞く",
       reading: "きく",
       meaning: "to hear/listen",
-      distractors: ["to see", "to speak", "to read"]
+      incorrectAnswers: ["to see", "to speak", "to read"]
     },
     example: {
       sentence: "おんがくを聞く",
@@ -442,7 +442,7 @@ const kanjiData = [
       word: "読む",
       reading: "よむ",
       meaning: "to read",
-      distractors: ["to write", "to speak", "to listen"]
+      incorrectAnswers: ["to write", "to speak", "to listen"]
     },
     example: {
       sentence: "本を読む",
@@ -461,7 +461,7 @@ const kanjiData = [
       word: "書く",
       reading: "かく",
       meaning: "to write",
-      distractors: ["to read", "to draw", "to erase"]
+      incorrectAnswers: ["to read", "to draw", "to erase"]
     },
     example: {
       sentence: "てがみを書く",
@@ -480,7 +480,7 @@ const kanjiData = [
       word: "話す",
       reading: "はなす",
       meaning: "to speak",
-      distractors: ["to listen", "to write", "to read"]
+      incorrectAnswers: ["to listen", "to write", "to read"]
     },
     example: {
       sentence: "にほんごを話す",
@@ -499,7 +499,7 @@ const kanjiData = [
       word: "買う",
       reading: "かう",
       meaning: "to buy",
-      distractors: ["to sell", "to borrow", "to give"]
+      incorrectAnswers: ["to sell", "to borrow", "to give"]
     },
     example: {
       sentence: "くつを買う",
@@ -518,7 +518,7 @@ const kanjiData = [
       word: "分かる",
       reading: "わかる",
       meaning: "to understand",
-      distractors: ["to forget", "to remember", "to think"]
+      incorrectAnswers: ["to forget", "to remember", "to think"]
     },
     example: {
       sentence: "にほんごが分かる",
@@ -539,7 +539,7 @@ const kanjiData = [
       word: "好き",
       reading: "すき",
       meaning: "like/love",
-      distractors: ["hate", "dislike", "fear"]
+      incorrectAnswers: ["hate", "dislike", "fear"]
     },
     example: {
       sentence: "すしが好きです",
@@ -559,7 +559,7 @@ const kanjiData = [
       word: "新しい",
       reading: "あたらしい",
       meaning: "new",
-      distractors: ["old", "used", "broken"]
+      incorrectAnswers: ["old", "used", "broken"]
     },
     example: {
       sentence: "新しいかばんです",
@@ -578,7 +578,7 @@ const kanjiData = [
       word: "古い",
       reading: "ふるい",
       meaning: "old (things)",
-      distractors: ["new", "young", "fresh"]
+      incorrectAnswers: ["new", "young", "fresh"]
     },
     example: {
       sentence: "この本は古いです",
@@ -599,7 +599,7 @@ const kanjiData = [
       word: "長い",
       reading: "ながい",
       meaning: "long",
-      distractors: ["short", "tall", "wide"]
+      incorrectAnswers: ["short", "tall", "wide"]
     },
     example: {
       sentence: "このみちは長いです",
@@ -620,7 +620,7 @@ const kanjiData = [
       word: "高い",
       reading: "たかい",
       meaning: "tall/expensive",
-      distractors: ["short", "cheap", "low"]
+      incorrectAnswers: ["short", "cheap", "low"]
     },
     example: {
       sentence: "あのビルは高いです",
@@ -641,7 +641,7 @@ const kanjiData = [
       word: "安い",
       reading: "やすい",
       meaning: "cheap",
-      distractors: ["expensive", "free", "valuable"]
+      incorrectAnswers: ["expensive", "free", "valuable"]
     },
     example: {
       sentence: "このみせは安いです",
@@ -664,7 +664,7 @@ const kanjiData = [
       word: "白い",
       reading: "しろい",
       meaning: "white",
-      distractors: ["black", "red", "blue"]
+      incorrectAnswers: ["black", "red", "blue"]
     },
     example: {
       sentence: "白いねこです",
@@ -683,7 +683,7 @@ const kanjiData = [
       word: "黒い",
       reading: "くろい",
       meaning: "black",
-      distractors: ["white", "red", "blue"]
+      incorrectAnswers: ["white", "red", "blue"]
     },
     example: {
       sentence: "黒いかばんです",
@@ -702,7 +702,7 @@ const kanjiData = [
       word: "赤い",
       reading: "あかい",
       meaning: "red",
-      distractors: ["blue", "green", "yellow"]
+      incorrectAnswers: ["blue", "green", "yellow"]
     },
     example: {
       sentence: "赤いりんごです",
@@ -721,7 +721,7 @@ const kanjiData = [
       word: "青い",
       reading: "あおい",
       meaning: "blue",
-      distractors: ["red", "green", "yellow"]
+      incorrectAnswers: ["red", "green", "yellow"]
     },
     example: {
       sentence: "そらは青いです",
@@ -743,7 +743,7 @@ const kanjiData = [
       word: "日",
       reading: "ひ",
       meaning: "day/sun",
-      distractors: ["moon", "star", "cloud"]
+      incorrectAnswers: ["moon", "star", "cloud"]
     },
     example: {
       sentence: "今日はあついです",
@@ -763,7 +763,7 @@ const kanjiData = [
       word: "月",
       reading: "つき",
       meaning: "moon/month",
-      distractors: ["sun", "star", "sky"]
+      incorrectAnswers: ["sun", "star", "sky"]
     },
     example: {
       sentence: "月がきれいです",
@@ -783,7 +783,7 @@ const kanjiData = [
       word: "火",
       reading: "ひ",
       meaning: "fire",
-      distractors: ["water", "earth", "wind"]
+      incorrectAnswers: ["water", "earth", "wind"]
     },
     example: {
       sentence: "火はあついです",
@@ -803,7 +803,7 @@ const kanjiData = [
       word: "土",
       reading: "つち",
       meaning: "earth/soil",
-      distractors: ["water", "fire", "sky"]
+      incorrectAnswers: ["water", "fire", "sky"]
     },
     example: {
       sentence: "土がやわらかいです",
@@ -823,7 +823,7 @@ const kanjiData = [
       word: "曜日",
       reading: "ようび",
       meaning: "day of the week",
-      distractors: ["month", "year", "time"]
+      incorrectAnswers: ["month", "year", "time"]
     },
     example: {
       sentence: "何曜日ですか",
@@ -843,7 +843,7 @@ const kanjiData = [
       word: "今年",
       reading: "ことし",
       meaning: "this year",
-      distractors: ["last year", "next year", "every year"]
+      incorrectAnswers: ["last year", "next year", "every year"]
     },
     example: {
       sentence: "今年はいいです",
@@ -863,7 +863,7 @@ const kanjiData = [
       word: "間",
       reading: "あいだ",
       meaning: "between",
-      distractors: ["beside", "above", "behind"]
+      incorrectAnswers: ["beside", "above", "behind"]
     },
     example: {
       sentence: "いすとつくえの間",
@@ -884,7 +884,7 @@ const kanjiData = [
       word: "時間",
       reading: "じかん",
       meaning: "time",
-      distractors: ["place", "day", "year"]
+      incorrectAnswers: ["place", "day", "year"]
     },
     example: {
       sentence: "時間がありません",
@@ -905,7 +905,7 @@ const kanjiData = [
       word: "車",
       reading: "くるま",
       meaning: "car",
-      distractors: ["train", "bus", "bicycle"]
+      incorrectAnswers: ["train", "bus", "bicycle"]
     },
     example: {
       sentence: "車がほしいです",
@@ -925,7 +925,7 @@ const kanjiData = [
       word: "電車",
       reading: "でんしゃ",
       meaning: "train",
-      distractors: ["bus", "car", "bicycle"]
+      incorrectAnswers: ["bus", "car", "bicycle"]
     },
     example: {
       sentence: "電車でいきます",
@@ -944,7 +944,7 @@ const kanjiData = [
       word: "駅",
       reading: "えき",
       meaning: "station",
-      distractors: ["airport", "bus stop", "harbor"]
+      incorrectAnswers: ["airport", "bus stop", "harbor"]
     },
     example: {
       sentence: "駅はどこですか",
@@ -965,7 +965,7 @@ const kanjiData = [
       word: "道",
       reading: "みち",
       meaning: "road/way",
-      distractors: ["bridge", "tunnel", "stairs"]
+      incorrectAnswers: ["bridge", "tunnel", "stairs"]
     },
     example: {
       sentence: "この道をまっすぐ",
@@ -985,7 +985,7 @@ const kanjiData = [
       word: "店",
       reading: "みせ",
       meaning: "store/shop",
-      distractors: ["house", "office", "school"]
+      incorrectAnswers: ["house", "office", "school"]
     },
     example: {
       sentence: "あの店は大きいです",
@@ -1008,7 +1008,7 @@ const kanjiData = [
       word: "元",
       reading: "もと",
       meaning: "origin/source",
-      distractors: ["end", "result", "copy"]
+      incorrectAnswers: ["end", "result", "copy"]
     },
     example: {
       sentence: "元にもどす",
@@ -1027,7 +1027,7 @@ const kanjiData = [
       word: "元気",
       reading: "げんき",
       meaning: "healthy/energetic",
-      distractors: ["tired", "sick", "sad"]
+      incorrectAnswers: ["tired", "sick", "sad"]
     },
     example: {
       sentence: "お元気ですか",
