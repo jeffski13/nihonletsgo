@@ -121,16 +121,17 @@ export function isKanjiInData(character) {
 
 /**
  * Get pronunciation quiz options (1 correct reading + 3 distractor readings) in random order
- * @param {string} correctReading - The correct hiragana reading
+ * Uses characterReading (the reading of just the kanji character) for distractors
+ * @param {string} correctReading - The correct hiragana reading of the kanji character
  * @param {string} currentCharacter - The current kanji character (to exclude from distractors)
  * @returns {object[]} - Array of option objects with value and isCorrect
  */
 export function getPronunciationQuizOptions(correctReading, currentCharacter) {
-  // Get all other readings from kanji data as potential distractors
+  // Get all other character readings from kanji data as potential distractors
   const otherReadings = kanjiData
     .filter(k => k.character !== currentCharacter)
-    .map(k => k.vocabularyWord.reading)
-    .filter(reading => reading !== correctReading);
+    .map(k => k.characterReading)
+    .filter(reading => reading && reading !== correctReading);
 
   // Shuffle and take 3 distractors
   const shuffledReadings = shuffleArray(otherReadings);

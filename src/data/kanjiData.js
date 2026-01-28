@@ -8,12 +8,15 @@
 // Each word in example sentences includes a 'kanjiInWord' array listing all kanji
 // characters used in that word. The UI should display hiragana for any kanji
 // the user hasn't learned yet.
+//
+// characterReading: The hiragana reading of just the kanji character within the vocabulary word
 
 const kanjiData = [
   // === BASIC STANDALONE KANJI (no dependencies) ===
   {
     character: "一",
     meaning: "one",
+    characterReading: "ひと",
     vocabularyWord: {
       word: "一つ",
       reading: "ひとつ",
@@ -33,6 +36,7 @@ const kanjiData = [
   {
     character: "人",
     meaning: "person",
+    characterReading: "ひと",
     vocabularyWord: {
       word: "人",
       reading: "ひと",
@@ -54,6 +58,7 @@ const kanjiData = [
   {
     character: "大",
     meaning: "big, large",
+    characterReading: "おお",
     vocabularyWord: {
       word: "大きい",
       reading: "おおきい",
@@ -74,6 +79,7 @@ const kanjiData = [
   {
     character: "小",
     meaning: "small",
+    characterReading: "ちい",
     vocabularyWord: {
       word: "小さい",
       reading: "ちいさい",
@@ -93,6 +99,7 @@ const kanjiData = [
   {
     character: "中",
     meaning: "middle, inside",
+    characterReading: "なか",
     vocabularyWord: {
       word: "中",
       reading: "なか",
@@ -113,6 +120,7 @@ const kanjiData = [
   {
     character: "上",
     meaning: "up, above",
+    characterReading: "うえ",
     vocabularyWord: {
       word: "上",
       reading: "うえ",
@@ -133,6 +141,7 @@ const kanjiData = [
   {
     character: "下",
     meaning: "down, below",
+    characterReading: "した",
     vocabularyWord: {
       word: "下",
       reading: "した",
@@ -155,6 +164,7 @@ const kanjiData = [
   {
     character: "出",
     meaning: "exit, go out",
+    characterReading: "で",
     vocabularyWord: {
       word: "出る",
       reading: "でる",
@@ -173,6 +183,7 @@ const kanjiData = [
   {
     character: "入",
     meaning: "enter",
+    characterReading: "はい",
     vocabularyWord: {
       word: "入る",
       reading: "はいる",
@@ -191,6 +202,7 @@ const kanjiData = [
   {
     character: "本",
     meaning: "book, origin",
+    characterReading: "ほん",
     vocabularyWord: {
       word: "本",
       reading: "ほん",
@@ -209,6 +221,7 @@ const kanjiData = [
   {
     character: "水",
     meaning: "water",
+    characterReading: "みず",
     vocabularyWord: {
       word: "水",
       reading: "みず",
@@ -227,6 +240,7 @@ const kanjiData = [
   {
     character: "木",
     meaning: "tree, wood",
+    characterReading: "き",
     vocabularyWord: {
       word: "木",
       reading: "き",
@@ -246,6 +260,7 @@ const kanjiData = [
   {
     character: "金",
     meaning: "gold, money",
+    characterReading: "かね",
     vocabularyWord: {
       word: "お金",
       reading: "おかね",
@@ -264,6 +279,7 @@ const kanjiData = [
   {
     character: "今",
     meaning: "now",
+    characterReading: "いま",
     vocabularyWord: {
       word: "今",
       reading: "いま",
@@ -284,6 +300,7 @@ const kanjiData = [
   {
     character: "何",
     meaning: "what",
+    characterReading: "なに",
     vocabularyWord: {
       word: "何",
       reading: "なに",
@@ -306,6 +323,7 @@ const kanjiData = [
   {
     character: "行",
     meaning: "go",
+    characterReading: "い",
     vocabularyWord: {
       word: "行く",
       reading: "いく",
@@ -324,6 +342,7 @@ const kanjiData = [
   {
     character: "来",
     meaning: "come",
+    characterReading: "く",
     vocabularyWord: {
       word: "来る",
       reading: "くる",
@@ -342,6 +361,7 @@ const kanjiData = [
   {
     character: "見",
     meaning: "see",
+    characterReading: "み",
     vocabularyWord: {
       word: "見る",
       reading: "みる",
@@ -360,6 +380,7 @@ const kanjiData = [
   {
     character: "食",
     meaning: "eat",
+    characterReading: "た",
     vocabularyWord: {
       word: "食べる",
       reading: "たべる",
@@ -378,6 +399,7 @@ const kanjiData = [
   {
     character: "飲",
     meaning: "drink",
+    characterReading: "の",
     vocabularyWord: {
       word: "飲む",
       reading: "のむ",
@@ -396,6 +418,7 @@ const kanjiData = [
   {
     character: "聞",
     meaning: "hear, ask",
+    characterReading: "き",
     vocabularyWord: {
       word: "聞く",
       reading: "きく",
@@ -414,6 +437,7 @@ const kanjiData = [
   {
     character: "読",
     meaning: "read",
+    characterReading: "よ",
     vocabularyWord: {
       word: "読む",
       reading: "よむ",
@@ -432,6 +456,7 @@ const kanjiData = [
   {
     character: "書",
     meaning: "write",
+    characterReading: "か",
     vocabularyWord: {
       word: "書く",
       reading: "かく",
@@ -450,6 +475,7 @@ const kanjiData = [
   {
     character: "話",
     meaning: "speak, story",
+    characterReading: "はな",
     vocabularyWord: {
       word: "話す",
       reading: "はなす",
@@ -468,6 +494,7 @@ const kanjiData = [
   {
     character: "買",
     meaning: "buy",
+    characterReading: "か",
     vocabularyWord: {
       word: "買う",
       reading: "かう",
@@ -486,6 +513,7 @@ const kanjiData = [
   {
     character: "分",
     meaning: "minute, understand",
+    characterReading: "わ",
     vocabularyWord: {
       word: "分かる",
       reading: "わかる",
@@ -506,6 +534,7 @@ const kanjiData = [
   {
     character: "好",
     meaning: "like, fond",
+    characterReading: "す",
     vocabularyWord: {
       word: "好き",
       reading: "すき",
@@ -525,6 +554,7 @@ const kanjiData = [
   {
     character: "新",
     meaning: "new",
+    characterReading: "あたら",
     vocabularyWord: {
       word: "新しい",
       reading: "あたらしい",
@@ -543,6 +573,7 @@ const kanjiData = [
   {
     character: "古",
     meaning: "old",
+    characterReading: "ふる",
     vocabularyWord: {
       word: "古い",
       reading: "ふるい",
@@ -563,6 +594,7 @@ const kanjiData = [
   {
     character: "長",
     meaning: "long",
+    characterReading: "なが",
     vocabularyWord: {
       word: "長い",
       reading: "ながい",
@@ -583,6 +615,7 @@ const kanjiData = [
   {
     character: "高",
     meaning: "tall, expensive",
+    characterReading: "たか",
     vocabularyWord: {
       word: "高い",
       reading: "たかい",
@@ -603,6 +636,7 @@ const kanjiData = [
   {
     character: "安",
     meaning: "cheap, peaceful",
+    characterReading: "やす",
     vocabularyWord: {
       word: "安い",
       reading: "やすい",
@@ -625,6 +659,7 @@ const kanjiData = [
   {
     character: "白",
     meaning: "white",
+    characterReading: "しろ",
     vocabularyWord: {
       word: "白い",
       reading: "しろい",
@@ -643,6 +678,7 @@ const kanjiData = [
   {
     character: "黒",
     meaning: "black",
+    characterReading: "くろ",
     vocabularyWord: {
       word: "黒い",
       reading: "くろい",
@@ -661,6 +697,7 @@ const kanjiData = [
   {
     character: "赤",
     meaning: "red",
+    characterReading: "あか",
     vocabularyWord: {
       word: "赤い",
       reading: "あかい",
@@ -679,6 +716,7 @@ const kanjiData = [
   {
     character: "青",
     meaning: "blue",
+    characterReading: "あお",
     vocabularyWord: {
       word: "青い",
       reading: "あおい",
@@ -700,6 +738,7 @@ const kanjiData = [
   {
     character: "日",
     meaning: "day, sun",
+    characterReading: "ひ",
     vocabularyWord: {
       word: "日",
       reading: "ひ",
@@ -719,6 +758,7 @@ const kanjiData = [
   {
     character: "月",
     meaning: "moon, month",
+    characterReading: "つき",
     vocabularyWord: {
       word: "月",
       reading: "つき",
@@ -738,6 +778,7 @@ const kanjiData = [
   {
     character: "火",
     meaning: "fire",
+    characterReading: "ひ",
     vocabularyWord: {
       word: "火",
       reading: "ひ",
@@ -757,6 +798,7 @@ const kanjiData = [
   {
     character: "土",
     meaning: "earth, soil",
+    characterReading: "つち",
     vocabularyWord: {
       word: "土",
       reading: "つち",
@@ -776,6 +818,7 @@ const kanjiData = [
   {
     character: "曜",
     meaning: "day of the week",
+    characterReading: "よう",
     vocabularyWord: {
       word: "曜日",
       reading: "ようび",
@@ -795,6 +838,7 @@ const kanjiData = [
   {
     character: "年",
     meaning: "year",
+    characterReading: "とし",
     vocabularyWord: {
       word: "今年",
       reading: "ことし",
@@ -814,6 +858,7 @@ const kanjiData = [
   {
     character: "間",
     meaning: "between, space",
+    characterReading: "あいだ",
     vocabularyWord: {
       word: "間",
       reading: "あいだ",
@@ -834,6 +879,7 @@ const kanjiData = [
   {
     character: "時",
     meaning: "time, hour",
+    characterReading: "じ",
     vocabularyWord: {
       word: "時間",
       reading: "じかん",
@@ -854,6 +900,7 @@ const kanjiData = [
   {
     character: "車",
     meaning: "car, vehicle",
+    characterReading: "くるま",
     vocabularyWord: {
       word: "車",
       reading: "くるま",
@@ -873,6 +920,7 @@ const kanjiData = [
   {
     character: "電",
     meaning: "electricity",
+    characterReading: "でん",
     vocabularyWord: {
       word: "電車",
       reading: "でんしゃ",
@@ -891,6 +939,7 @@ const kanjiData = [
   {
     character: "駅",
     meaning: "station",
+    characterReading: "えき",
     vocabularyWord: {
       word: "駅",
       reading: "えき",
@@ -911,6 +960,7 @@ const kanjiData = [
   {
     character: "道",
     meaning: "road, way",
+    characterReading: "みち",
     vocabularyWord: {
       word: "道",
       reading: "みち",
@@ -930,6 +980,7 @@ const kanjiData = [
   {
     character: "店",
     meaning: "store",
+    characterReading: "みせ",
     vocabularyWord: {
       word: "店",
       reading: "みせ",
@@ -952,6 +1003,7 @@ const kanjiData = [
   {
     character: "元",
     meaning: "origin, source",
+    characterReading: "もと",
     vocabularyWord: {
       word: "元",
       reading: "もと",
@@ -970,6 +1022,7 @@ const kanjiData = [
   {
     character: "気",
     meaning: "spirit, energy",
+    characterReading: "き",
     vocabularyWord: {
       word: "元気",
       reading: "げんき",

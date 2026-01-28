@@ -10,8 +10,7 @@ function PronunciationQuiz({ kanji, onCorrect }) {
 
   useEffect(() => {
     if (kanji) {
-      const { reading } = kanji.vocabularyWord;
-      setOptions(getPronunciationQuizOptions(reading, kanji.character));
+      setOptions(getPronunciationQuizOptions(kanji.characterReading, kanji.character));
       setSelectedAnswer(null);
       setShowFeedback(false);
       setIsCorrect(false);
@@ -40,22 +39,21 @@ function PronunciationQuiz({ kanji, onCorrect }) {
     setShowFeedback(false);
     setIsCorrect(false);
     // Reshuffle options on retry
-    const { reading } = kanji.vocabularyWord;
-    setOptions(getPronunciationQuizOptions(reading, kanji.character));
+    setOptions(getPronunciationQuizOptions(kanji.characterReading, kanji.character));
   };
 
   return (
     <Card className="text-center">
       <Card.Body>
         <Card.Title className="mb-4">
-          How do you read this word?
+          How do you read this kanji in the word "{kanji.vocabularyWord.word}"?
         </Card.Title>
 
         <div
-          style={{ fontSize: '3rem', marginBottom: '2rem' }}
-          data-testid="pronunciation-word"
+          style={{ fontSize: '5rem', marginBottom: '2rem' }}
+          data-testid="pronunciation-character"
         >
-          {kanji.vocabularyWord.word}
+          {kanji.character}
         </div>
 
         <div className="d-grid gap-2" style={{ maxWidth: '400px', margin: '0 auto' }}>
@@ -93,7 +91,7 @@ function PronunciationQuiz({ kanji, onCorrect }) {
             ) : (
               <>
                 <p className="mb-2">
-                  Not quite. The correct reading is: <strong style={{ fontSize: '1.25rem' }}>{kanji.vocabularyWord.reading}</strong>
+                  Not quite. The correct reading is: <strong style={{ fontSize: '1.25rem' }}>{kanji.characterReading}</strong>
                 </p>
                 <Button variant="outline-danger" onClick={handleRetry} data-testid="pronunciation-retry-button">
                   Try Again
