@@ -1,16 +1,45 @@
-# React + Vite
+# Nihon Let's Go
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A kanji learning web app that helps you learn Japanese kanji characters through a structured, interactive approach.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 3-Step Learning Flow
 
-## React Compiler
+Each kanji is taught through a multi-step process:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Introduction** - See the kanji, its meaning, and a vocabulary word that uses it
+2. **Quiz** - Test your knowledge with a multiple-choice quiz on the vocabulary word
+3. **Example Sentence** - See the vocabulary in context with an interactive sentence where you can hover over words to see their readings and meanings
 
-## Expanding the ESLint configuration
+### Progress Tracking
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Track which kanji you've learned
+- View your progress as a percentage
+- See all learned kanji in a visual grid on the Progress page
+- Progress is saved in your browser automatically
+
+### Custom Learning Lists
+
+- Add your own custom list of kanji to learn in a specific order
+- Or use the default list ordered by usefulness for daily conversation
+
+## Pages
+
+- **Learn** - The main learning interface with the 3-step flow
+- **Progress** - View your learning stats and all kanji you've mastered
+- **Settings** - Customize your learning list and manage your progress
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## Tech Stack
+
+- React
+- React Router
+- React Bootstrap
+- Vite
