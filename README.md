@@ -43,3 +43,7 @@ npm run dev
 - React Router
 - React Bootstrap
 - Vite
+
+## Credit
+
+Built with Claude Code
