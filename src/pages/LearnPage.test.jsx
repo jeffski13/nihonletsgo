@@ -128,6 +128,6 @@ describe('LearnPage', () => {
 
     render(<LearnPage />);
 
-    expect(screen.getByText(/3 \/ 51 kanji learned/)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(`3 / ${kanjiData.length} kanji learned`))).toBeInTheDocument();
   });
 });
