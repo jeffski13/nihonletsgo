@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Container, Alert, ProgressBar } from 'react-bootstrap';
 import KanjiIntro from '../components/KanjiIntro';
 import KanjiQuiz from '../components/KanjiQuiz';
+import PronunciationQuiz from '../components/PronunciationQuiz';
 import ExampleSentence from '../components/ExampleSentence';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { getNextKanji, getProgressStats } from '../utils/kanjiUtils';
@@ -9,6 +10,7 @@ import { getNextKanji, getProgressStats } from '../utils/kanjiUtils';
 const STEPS = {
   INTRO: 'intro',
   QUIZ: 'quiz',
+  PRONUNCIATION: 'pronunciation',
   EXAMPLE: 'example'
 };
 
@@ -29,6 +31,10 @@ function LearnPage() {
   };
 
   const handleQuizCorrect = () => {
+    setStep(STEPS.PRONUNCIATION);
+  };
+
+  const handlePronunciationCorrect = () => {
     setStep(STEPS.EXAMPLE);
   };
 
@@ -63,7 +69,7 @@ function LearnPage() {
         <div className="d-flex justify-content-between align-items-center mb-2">
           <span>Progress: {stats.learned} / {stats.total} kanji learned</span>
           <span data-testid="step-indicator">
-            Step {step === STEPS.INTRO ? 1 : step === STEPS.QUIZ ? 2 : 3} of 3
+            Step {step === STEPS.INTRO ? 1 : step === STEPS.QUIZ ? 2 : step === STEPS.PRONUNCIATION ? 3 : 4} of 4
           </span>
         </div>
         <ProgressBar
@@ -79,6 +85,10 @@ function LearnPage() {
 
       {step === STEPS.QUIZ && (
         <KanjiQuiz kanji={currentKanji} onCorrect={handleQuizCorrect} />
+      )}
+
+      {step === STEPS.PRONUNCIATION && (
+        <PronunciationQuiz kanji={currentKanji} onCorrect={handlePronunciationCorrect} />
       )}
 
       {step === STEPS.EXAMPLE && (

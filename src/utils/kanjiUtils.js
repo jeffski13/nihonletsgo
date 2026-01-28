@@ -118,3 +118,28 @@ export function parseCustomKanjiList(input) {
 export function isKanjiInData(character) {
   return kanjiData.some(k => k.character === character);
 }
+
+/**
+ * Get pronunciation quiz options (1 correct reading + 3 distractor readings) in random order
+ * @param {string} correctReading - The correct hiragana reading
+ * @param {string} currentCharacter - The current kanji character (to exclude from distractors)
+ * @returns {object[]} - Array of option objects with value and isCorrect
+ */
+export function getPronunciationQuizOptions(correctReading, currentCharacter) {
+  // Get all other readings from kanji data as potential distractors
+  const otherReadings = kanjiData
+    .filter(k => k.character !== currentCharacter)
+    .map(k => k.vocabularyWord.reading)
+    .filter(reading => reading !== correctReading);
+
+  // Shuffle and take 3 distractors
+  const shuffledReadings = shuffleArray(otherReadings);
+  const distractors = shuffledReadings.slice(0, 3);
+
+  const options = [
+    { value: correctReading, isCorrect: true },
+    ...distractors.map(d => ({ value: d, isCorrect: false }))
+  ];
+
+  return shuffleArray(options);
+}
