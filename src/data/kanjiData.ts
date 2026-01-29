@@ -11,7 +11,37 @@
 //
 // characterReading: The hiragana reading of just the kanji character within the vocabulary word
 
-const kanjiData = [
+export interface ExampleWord {
+  text: string;
+  reading: string;
+  meaning: string;
+  kanjiInWord: string[];
+  isNewWord?: boolean;
+}
+
+export interface VocabularyWord {
+  word: string;
+  reading: string;
+  meaning: string;
+  incorrectAnswers: string[];
+}
+
+export interface Example {
+  sentence: string;
+  sentenceMeaning: string;
+  incorrectSentenceMeanings: string[];
+  words: ExampleWord[];
+}
+
+export interface KanjiEntry {
+  character: string;
+  meaning: string;
+  characterReading: string;
+  vocabularyWord: VocabularyWord;
+  example: Example;
+}
+
+const kanjiData: KanjiEntry[] = [
   // === BASIC STANDALONE KANJI (no dependencies) ===
   {
     character: "一",
