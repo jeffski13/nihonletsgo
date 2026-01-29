@@ -98,14 +98,14 @@ describe('LearnPage', () => {
         return [[], mockSetLearnedKanji];
       }
       if (key === 'customKanjiList') {
-        return [['食', '水'], mockSetCustomKanjiList];
+        return [[kanjiData[5].character, kanjiData[6].character], mockSetCustomKanjiList];
       }
       return [null, vi.fn()];
     });
 
     render(<LearnPage />);
 
-    expect(screen.getByTestId('kanji-character')).toHaveTextContent('食');
+    expect(screen.getByTestId('kanji-character')).toHaveTextContent(kanjiData[5].character);
   });
 
   it('displays vocabulary word and meaning on intro screen', () => {

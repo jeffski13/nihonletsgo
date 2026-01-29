@@ -8,6 +8,7 @@ vi.mock('../hooks/useLocalStorage', () => ({
 }));
 
 import useLocalStorage from '../hooks/useLocalStorage';
+import kanjiData from '../data/kanjiData';
 
 describe('ProgressPage', () => {
   beforeEach(() => {
@@ -84,9 +85,7 @@ describe('ProgressPage', () => {
 
   it('calculates percentage correctly', () => {
     // Mock with about half the kanji learned
-    const halfKanji = ['日', '一', '人', '大', '年', '中', '出', '上', '下', '小',
-      '本', '月', '水', '火', '木', '金', '土', '行', '来', '見',
-      '食', '飲', '聞', '読', '書'];
+    const halfKanji = kanjiData.slice(0, Math.floor(kanjiData.length / 2)).map(k => k.character);
 
     useLocalStorage.mockImplementation((key) => {
       if (key === 'learnedKanji') {

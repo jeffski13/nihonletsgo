@@ -10,6 +10,9 @@ vi.mock('../hooks/useLocalStorage', () => ({
 import useLocalStorage from '../hooks/useLocalStorage';
 import kanjiData from '../data/kanjiData';
 
+// Create halfKanji based on half the length of kanjiData
+const halfKanji = kanjiData.slice(0, Math.floor(kanjiData.length / 2)).map(k => k.character);
+
 describe('SettingsPage', () => {
   const mockSetLearnedKanji = vi.fn();
   const mockSetCustomKanjiList = vi.fn();
