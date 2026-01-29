@@ -144,3 +144,17 @@ export function getPronunciationQuizOptions(correctReading, currentCharacter) {
 
   return shuffleArray(options);
 }
+
+/**
+ * Get sentence quiz options (1 correct meaning + 3 incorrect meanings) in random order
+ * @param {string} correctMeaning - The correct sentence meaning
+ * @param {string[]} incorrectMeanings - Array of incorrect sentence meanings
+ * @returns {object[]} - Array of option objects with value and isCorrect
+ */
+export function getSentenceQuizOptions(correctMeaning, incorrectMeanings) {
+  const options = [
+    { value: correctMeaning, isCorrect: true },
+    ...incorrectMeanings.map(m => ({ value: m, isCorrect: false }))
+  ];
+  return shuffleArray(options);
+}

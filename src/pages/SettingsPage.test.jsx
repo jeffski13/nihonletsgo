@@ -8,6 +8,7 @@ vi.mock('../hooks/useLocalStorage', () => ({
 }));
 
 import useLocalStorage from '../hooks/useLocalStorage';
+import kanjiData from '../data/kanjiData';
 
 describe('SettingsPage', () => {
   const mockSetLearnedKanji = vi.fn();
@@ -57,17 +58,17 @@ describe('SettingsPage', () => {
     render(<SettingsPage />);
 
     const input = screen.getByTestId('custom-kanji-input');
-    fireEvent.change(input, { target: { value: '食 水 火' } });
+    fireEvent.change(input, { target: { value: `${kanjiData[4].character} ${kanjiData[5].character} ${kanjiData[6].character}` } });
     fireEvent.click(screen.getByTestId('save-custom-button'));
 
-    expect(mockSetCustomKanjiList).toHaveBeenCalledWith(['食', '水', '火']);
+    expect(mockSetCustomKanjiList).toHaveBeenCalledWith([kanjiData[4].character, kanjiData[5].character, kanjiData[6].character]);
   });
 
   it('shows success message after saving', async () => {
     render(<SettingsPage />);
 
     const input = screen.getByTestId('custom-kanji-input');
-    fireEvent.change(input, { target: { value: '食 水' } });
+    fireEvent.change(input, { target: { value: `${kanjiData[5].character} ${kanjiData[7].character}` } });
     fireEvent.click(screen.getByTestId('save-custom-button'));
 
     expect(screen.getByTestId('save-message')).toBeInTheDocument();

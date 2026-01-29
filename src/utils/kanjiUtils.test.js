@@ -25,8 +25,8 @@ describe('kanjiUtils', () => {
     });
 
     it('prioritizes custom kanji list', () => {
-      const result = getNextKanji([], ['食', '水']);
-      expect(result.character).toBe('食');
+      const result = getNextKanji([], [kanjiData[5].character, kanjiData[6].character]);
+      expect(result.character).toBe(kanjiData[5].character);
     });
 
     it('skips learned kanji in custom list', () => {
@@ -66,10 +66,10 @@ describe('kanjiUtils', () => {
 
   describe('getKanjiByCharacter', () => {
     it('returns kanji data for existing character', () => {
-      const result = getKanjiByCharacter('日');
+      const result = getKanjiByCharacter(kanjiData[0].character);
       expect(result).toBeDefined();
-      expect(result.character).toBe('日');
-      expect(result.meaning).toBe('day, sun');
+      expect(result.character).toBe(kanjiData[0].character);
+      expect(result.meaning).toBe(kanjiData[0].meaning);
     });
 
     it('returns undefined for non-existent character', () => {
@@ -175,8 +175,8 @@ describe('kanjiUtils', () => {
 
   describe('isKanjiInData', () => {
     it('returns true for kanji in data', () => {
-      expect(isKanjiInData('日')).toBe(true);
-      expect(isKanjiInData('食')).toBe(true);
+      expect(isKanjiInData('一')).toBe(true);
+      expect(isKanjiInData('人')).toBe(true);
     });
 
     it('returns false for kanji not in data', () => {

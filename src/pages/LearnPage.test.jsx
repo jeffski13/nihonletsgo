@@ -33,7 +33,7 @@ describe('LearnPage', () => {
   it('renders the introduction step initially', () => {
     render(<LearnPage />);
 
-    expect(screen.getByTestId('step-indicator')).toHaveTextContent('Step 1 of 4');
+    expect(screen.getByTestId('step-indicator')).toHaveTextContent('Step 1 of 5');
     expect(screen.getByTestId('ready-button')).toBeInTheDocument();
   });
 
