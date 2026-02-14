@@ -42,26 +42,113 @@ export interface KanjiEntry {
 }
 
 const kanjiData: KanjiEntry[] = [
-  // === BASIC STANDALONE KANJI (no dependencies) ===
   {
-    character: "一",
-    meaning: "one",
-    characterReading: "ひと",
+    character: "子",
+    meaning: "child",
+    characterReading: "こ",
     vocabularyWord: {
-      word: "一つ",
-      reading: "ひとつ",
-      meaning: "one (thing)",
-      incorrectAnswers: ["two (things)", "three (things)", "many"]
+      word: "子ども",
+      reading: "こども",
+      meaning: "child",
+      incorrectAnswers: ["adult", "parent", "baby"]
     },
     example: {
-      sentence: "りんごを一つください",
-      sentenceMeaning: "One apple, please.",
-      incorrectSentenceMeanings: ["Two apples, please.", "One orange, please.", "I don't want any apples."],
+      sentence: "子どもがあそんでいます",
+      sentenceMeaning: "A child is playing.",
+      incorrectSentenceMeanings: ["A child is sleeping.", "An adult is playing.", "A child is eating."],
       words: [
-        { text: "りんご", reading: "ringo", meaning: "apple", kanjiInWord: [] },
-        { text: "を", reading: "wo", meaning: "(object marker)", kanjiInWord: [] },
-        { text: "一つ", reading: "hitotsu", meaning: "one (thing)", isNewWord: true, kanjiInWord: ["一"] },
-        { text: "ください", reading: "kudasai", meaning: "please give me", kanjiInWord: [] }
+        { text: "子ども", reading: "kodomo", meaning: "child", isNewWord: true, kanjiInWord: ["子"] },
+        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
+        { text: "あそんでいます", reading: "asondeimasu", meaning: "is playing", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "学",
+    meaning: "study, learning",
+    characterReading: "がく",
+    vocabularyWord: {
+      word: "学せい",
+      reading: "がくせい",
+      meaning: "student",
+      incorrectAnswers: ["teacher", "school", "friend"]
+    },
+    example: {
+      sentence: "わたしは学せいです",
+      sentenceMeaning: "I am a student.",
+      incorrectSentenceMeanings: ["I am a teacher.", "You are a student.", "I am not a student."],
+      words: [
+        { text: "わたし", reading: "watashi", meaning: "I", kanjiInWord: [] },
+        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
+        { text: "学せい", reading: "gakusei", meaning: "student", isNewWord: true, kanjiInWord: ["学"] },
+        { text: "です", reading: "desu", meaning: "am/is", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "生",
+    meaning: "life, birth",
+    characterReading: "う",
+    vocabularyWord: {
+      word: "生まれる",
+      reading: "うまれる",
+      meaning: "to be born",
+      incorrectAnswers: ["to die", "to live", "to grow"]
+    },
+    example: {
+      sentence: "子どもが生まれました",
+      sentenceMeaning: "A child was born.",
+      incorrectSentenceMeanings: ["A child is playing.", "A child grew up.", "An adult was born."],
+      words: [
+        { text: "子ども", reading: "kodomo", meaning: "child", kanjiInWord: ["子"] },
+        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
+        { text: "生まれました", reading: "umaremashita", meaning: "was born", isNewWord: true, kanjiInWord: ["生"] }
+      ]
+    }
+  },
+  {
+    character: "先",
+    meaning: "previous, ahead",
+    characterReading: "せん",
+    vocabularyWord: {
+      word: "先生",
+      reading: "せんせい",
+      meaning: "teacher",
+      incorrectAnswers: ["student", "friend", "doctor"]
+    },
+    example: {
+      sentence: "先生はやさしいです",
+      sentenceMeaning: "The teacher is kind.",
+      incorrectSentenceMeanings: ["The teacher is strict.", "The student is kind.", "The teacher is not here."],
+      words: [
+        { text: "先生", reading: "sensei", meaning: "teacher", isNewWord: true, kanjiInWord: ["先", "生"] },
+        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
+        { text: "やさしい", reading: "yasashii", meaning: "kind", kanjiInWord: [] },
+        { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "目",
+    meaning: "eye",
+    characterReading: "め",
+    vocabularyWord: {
+      word: "目",
+      reading: "め",
+      meaning: "eye",
+      incorrectAnswers: ["ear", "nose", "mouth"]
+    },
+    example: {
+      sentence: "子どもの目はきれいです",
+      sentenceMeaning: "The child's eyes are beautiful.",
+      incorrectSentenceMeanings: ["The child's ears are big.", "The teacher's eyes are beautiful.", "The child's eyes are small."],
+      words: [
+        { text: "子ども", reading: "kodomo", meaning: "child", kanjiInWord: ["子"] },
+        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
+        { text: "目", reading: "me", meaning: "eyes", isNewWord: true, kanjiInWord: ["目"] },
+        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
+        { text: "きれい", reading: "kirei", meaning: "beautiful", kanjiInWord: [] },
+        { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] }
       ]
     }
   },
@@ -76,259 +163,15 @@ const kanjiData: KanjiEntry[] = [
       incorrectAnswers: ["animal", "thing", "place"]
     },
     example: {
-      sentence: "あの人はだれですか",
-      sentenceMeaning: "Who is that person?",
-      incorrectSentenceMeanings: ["Where is that person?", "What is that thing?", "Is that person here?"],
+      sentence: "あの人は先生です",
+      sentenceMeaning: "That person is a teacher.",
+      incorrectSentenceMeanings: ["That person is a student.", "This person is a teacher.", "That person is a doctor."],
       words: [
         { text: "あの", reading: "ano", meaning: "that", kanjiInWord: [] },
         { text: "人", reading: "hito", meaning: "person", isNewWord: true, kanjiInWord: ["人"] },
         { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
-        { text: "だれ", reading: "dare", meaning: "who", kanjiInWord: [] },
-        { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] },
-        { text: "か", reading: "ka", meaning: "(question marker)", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "大",
-    meaning: "big, large",
-    characterReading: "おお",
-    vocabularyWord: {
-      word: "大きい",
-      reading: "おおきい",
-      meaning: "big",
-      incorrectAnswers: ["small", "tall", "wide"]
-    },
-    example: {
-      sentence: "このいぬは大きいです",
-      sentenceMeaning: "This dog is big.",
-      incorrectSentenceMeanings: ["This dog is small.", "That cat is big.", "This dog is cute."],
-      words: [
-        { text: "この", reading: "kono", meaning: "this", kanjiInWord: [] },
-        { text: "いぬ", reading: "inu", meaning: "dog", kanjiInWord: [] },
-        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
-        { text: "大きい", reading: "ookii", meaning: "big", isNewWord: true, kanjiInWord: ["大"] },
+        { text: "先生", reading: "sensei", meaning: "teacher", kanjiInWord: ["先", "生"] },
         { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "小",
-    meaning: "small",
-    characterReading: "ちい",
-    vocabularyWord: {
-      word: "小さい",
-      reading: "ちいさい",
-      meaning: "small",
-      incorrectAnswers: ["big", "tall", "wide"]
-    },
-    example: {
-      sentence: "小さいねこがいます",
-      sentenceMeaning: "There is a small cat.",
-      incorrectSentenceMeanings: ["There is a big cat.", "There is a small dog.", "The small cat is sleeping."],
-      words: [
-        { text: "小さい", reading: "chiisai", meaning: "small", isNewWord: true, kanjiInWord: ["小"] },
-        { text: "ねこ", reading: "neko", meaning: "cat", kanjiInWord: [] },
-        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
-        { text: "います", reading: "imasu", meaning: "exists (animate)", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "中",
-    meaning: "middle, inside",
-    characterReading: "なか",
-    vocabularyWord: {
-      word: "中",
-      reading: "なか",
-      meaning: "inside",
-      incorrectAnswers: ["outside", "above", "below"]
-    },
-    example: {
-      sentence: "かばんの中にあります",
-      sentenceMeaning: "It's inside the bag.",
-      incorrectSentenceMeanings: ["It's on top of the bag.", "It's next to the bag.", "The bag is not here."],
-      words: [
-        { text: "かばん", reading: "kaban", meaning: "bag", kanjiInWord: [] },
-        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
-        { text: "中", reading: "naka", meaning: "inside", isNewWord: true, kanjiInWord: ["中"] },
-        { text: "に", reading: "ni", meaning: "in/at", kanjiInWord: [] },
-        { text: "あります", reading: "arimasu", meaning: "exists", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "上",
-    meaning: "up, above",
-    characterReading: "うえ",
-    vocabularyWord: {
-      word: "上",
-      reading: "うえ",
-      meaning: "above/on top",
-      incorrectAnswers: ["below", "beside", "behind"]
-    },
-    example: {
-      sentence: "つくえの上にあります",
-      sentenceMeaning: "It's on the desk.",
-      incorrectSentenceMeanings: ["It's under the desk.", "It's next to the desk.", "The desk is not here."],
-      words: [
-        { text: "つくえ", reading: "tsukue", meaning: "desk", kanjiInWord: [] },
-        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
-        { text: "上", reading: "ue", meaning: "on top", isNewWord: true, kanjiInWord: ["上"] },
-        { text: "に", reading: "ni", meaning: "at", kanjiInWord: [] },
-        { text: "あります", reading: "arimasu", meaning: "exists", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "下",
-    meaning: "down, below",
-    characterReading: "した",
-    vocabularyWord: {
-      word: "下",
-      reading: "した",
-      meaning: "below/under",
-      incorrectAnswers: ["above", "beside", "behind"]
-    },
-    example: {
-      sentence: "いすの下にねこがいます",
-      sentenceMeaning: "There is a cat under the chair.",
-      incorrectSentenceMeanings: ["There is a cat on the chair.", "There is a dog under the chair.", "The chair is on the cat."],
-      words: [
-        { text: "いす", reading: "isu", meaning: "chair", kanjiInWord: [] },
-        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
-        { text: "下", reading: "shita", meaning: "under", isNewWord: true, kanjiInWord: ["下"] },
-        { text: "に", reading: "ni", meaning: "at", kanjiInWord: [] },
-        { text: "ねこ", reading: "neko", meaning: "cat", kanjiInWord: [] },
-        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
-        { text: "います", reading: "imasu", meaning: "exists (animate)", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "出",
-    meaning: "exit, go out",
-    characterReading: "で",
-    vocabularyWord: {
-      word: "出る",
-      reading: "でる",
-      meaning: "to exit/go out",
-      incorrectAnswers: ["to enter", "to stay", "to return"]
-    },
-    example: {
-      sentence: "へやを出る",
-      sentenceMeaning: "To leave the room.",
-      incorrectSentenceMeanings: ["To enter the room.", "To clean the room.", "To stay in the room."],
-      words: [
-        { text: "へや", reading: "heya", meaning: "room", kanjiInWord: [] },
-        { text: "を", reading: "wo", meaning: "(object marker)", kanjiInWord: [] },
-        { text: "出る", reading: "deru", meaning: "to exit", isNewWord: true, kanjiInWord: ["出"] }
-      ]
-    }
-  },
-  {
-    character: "入",
-    meaning: "enter",
-    characterReading: "はい",
-    vocabularyWord: {
-      word: "入る",
-      reading: "はいる",
-      meaning: "to enter",
-      incorrectAnswers: ["to exit", "to stay", "to return"]
-    },
-    example: {
-      sentence: "へやに入る",
-      sentenceMeaning: "To enter the room.",
-      incorrectSentenceMeanings: ["To leave the room.", "To see the room.", "To find the room."],
-      words: [
-        { text: "へや", reading: "heya", meaning: "room", kanjiInWord: [] },
-        { text: "に", reading: "ni", meaning: "into", kanjiInWord: [] },
-        { text: "入る", reading: "hairu", meaning: "to enter", isNewWord: true, kanjiInWord: ["入"] }
-      ]
-    }
-  },
-  {
-    character: "本",
-    meaning: "book, origin",
-    characterReading: "ほん",
-    vocabularyWord: {
-      word: "本",
-      reading: "ほん",
-      meaning: "book",
-      incorrectAnswers: ["magazine", "newspaper", "letter"]
-    },
-    example: {
-      sentence: "本をかいます",
-      sentenceMeaning: "I will buy a book.",
-      incorrectSentenceMeanings: ["I will read a book.", "I will sell a book.", "I bought a magazine."],
-      words: [
-        { text: "本", reading: "hon", meaning: "book", isNewWord: true, kanjiInWord: ["本"] },
-        { text: "を", reading: "wo", meaning: "(object marker)", kanjiInWord: [] },
-        { text: "かいます", reading: "kaimasu", meaning: "buy", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "水",
-    meaning: "water",
-    characterReading: "みず",
-    vocabularyWord: {
-      word: "水",
-      reading: "みず",
-      meaning: "water",
-      incorrectAnswers: ["tea", "juice", "milk"]
-    },
-    example: {
-      sentence: "水をのみます",
-      sentenceMeaning: "I will drink water.",
-      incorrectSentenceMeanings: ["I will drink tea.", "I will eat water.", "I don't want water."],
-      words: [
-        { text: "水", reading: "mizu", meaning: "water", isNewWord: true, kanjiInWord: ["水"] },
-        { text: "を", reading: "wo", meaning: "(object marker)", kanjiInWord: [] },
-        { text: "のみます", reading: "nomimasu", meaning: "drink", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "木",
-    meaning: "tree, wood",
-    characterReading: "き",
-    vocabularyWord: {
-      word: "木",
-      reading: "き",
-      meaning: "tree",
-      incorrectAnswers: ["flower", "grass", "leaf"]
-    },
-    example: {
-      sentence: "大きい木があります",
-      sentenceMeaning: "There is a big tree.",
-      incorrectSentenceMeanings: ["There is a small tree.", "There is a big flower.", "The tree is not here."],
-      words: [
-        { text: "大きい", reading: "ookii", meaning: "big", kanjiInWord: ["大"] },
-        { text: "木", reading: "ki", meaning: "tree", isNewWord: true, kanjiInWord: ["木"] },
-        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
-        { text: "あります", reading: "arimasu", meaning: "exists", kanjiInWord: [] }
-      ]
-    }
-  },
-  {
-    character: "金",
-    meaning: "gold, money",
-    characterReading: "かね",
-    vocabularyWord: {
-      word: "お金",
-      reading: "おかね",
-      meaning: "money",
-      incorrectAnswers: ["gold", "silver", "coin"]
-    },
-    example: {
-      sentence: "お金がありません",
-      sentenceMeaning: "I don't have money.",
-      incorrectSentenceMeanings: ["I have money.", "I need money.", "Money is important."],
-      words: [
-        { text: "お金", reading: "okane", meaning: "money", isNewWord: true, kanjiInWord: ["金"] },
-        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
-        { text: "ありません", reading: "arimasen", meaning: "does not exist", kanjiInWord: [] }
       ]
     }
   }
