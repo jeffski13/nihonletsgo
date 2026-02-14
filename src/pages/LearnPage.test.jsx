@@ -11,17 +11,17 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import kanjiData from '../data/kanjiData';
 
 describe('LearnPage', () => {
-  const mockSetLearnedKanji = vi.fn();
+  const mockSetCompletedEntries = vi.fn();
   const mockSetCustomKanjiList = vi.fn();
 
   beforeEach(() => {
-    mockSetLearnedKanji.mockClear();
+    mockSetCompletedEntries.mockClear();
     mockSetCustomKanjiList.mockClear();
 
     // Default mock implementation
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [[], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[], mockSetCustomKanjiList];
@@ -50,13 +50,13 @@ describe('LearnPage', () => {
     expect(screen.getByTestId('kanji-character')).toBeInTheDocument();
   });
 
-  it('shows completion message when all kanji are learned', () => {
-    // Mock all kanji as learned
-    const allKanji = kanjiData.map(entry => entry.character);
+  it('shows completion message when all entries are completed', () => {
+    // Mock all entries as completed
+    const allIndices = kanjiData.map((_, i) => i);
 
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [allKanji, mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [allIndices, mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[], mockSetCustomKanjiList];
@@ -73,13 +73,13 @@ describe('LearnPage', () => {
   it('displays the first kanji when starting fresh', () => {
     render(<LearnPage />);
 
-    expect(screen.getByTestId('kanji-character')).toHaveTextContent('一');
+    expect(screen.getByTestId('kanji-character')).toHaveTextContent(kanjiData[0].character);
   });
 
-  it('displays the next unlearned kanji', () => {
+  it('displays the next uncompleted entry', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [['日'], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[0], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[], mockSetCustomKanjiList];
@@ -89,13 +89,13 @@ describe('LearnPage', () => {
 
     render(<LearnPage />);
 
-    expect(screen.getByTestId('kanji-character')).toHaveTextContent('一');
+    expect(screen.getByTestId('kanji-character')).toHaveTextContent(kanjiData[1].character);
   });
 
   it('prioritizes custom kanji list', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [[], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[kanjiData[5].character, kanjiData[6].character], mockSetCustomKanjiList];
@@ -117,8 +117,8 @@ describe('LearnPage', () => {
 
   it('displays progress statistics', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [['日', '一', '人'], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[0, 1, 2], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[], mockSetCustomKanjiList];

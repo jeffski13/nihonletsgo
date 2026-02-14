@@ -13,7 +13,7 @@ import kanjiData from '../data/kanjiData';
 describe('ProgressPage', () => {
   beforeEach(() => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
+      if (key === 'completedEntries') {
         return [[], vi.fn()];
       }
       return [null, vi.fn()];
@@ -26,7 +26,7 @@ describe('ProgressPage', () => {
     expect(screen.getByText('Your Progress')).toBeInTheDocument();
   });
 
-  it('displays learned count as 0 when nothing learned', () => {
+  it('displays learned count as 0 when nothing completed', () => {
     render(<ProgressPage />);
 
     expect(screen.getByTestId('learned-count')).toHaveTextContent('0');
@@ -36,12 +36,11 @@ describe('ProgressPage', () => {
     render(<ProgressPage />);
 
     expect(screen.getByTestId('total-count')).toBeInTheDocument();
-    // Should be greater than 0
     const total = parseInt(screen.getByTestId('total-count').textContent);
-    expect(total).toBeGreaterThan(0);
+    expect(total).toBe(kanjiData.length);
   });
 
-  it('displays percentage as 0 when nothing learned', () => {
+  it('displays percentage as 0 when nothing completed', () => {
     render(<ProgressPage />);
 
     expect(screen.getByTestId('percentage')).toHaveTextContent('0%');
@@ -55,9 +54,10 @@ describe('ProgressPage', () => {
   });
 
   it('displays learned kanji in grid', () => {
+    // Complete first 3 entries (indices 0, 1, 2)
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [['日', '月', '火'], vi.fn()];
+      if (key === 'completedEntries') {
+        return [[0, 1, 2], vi.fn()];
       }
       return [null, vi.fn()];
     });
@@ -65,15 +65,15 @@ describe('ProgressPage', () => {
     render(<ProgressPage />);
 
     expect(screen.getByTestId('kanji-grid')).toBeInTheDocument();
-    expect(screen.getByTestId('kanji-badge-日')).toBeInTheDocument();
-    expect(screen.getByTestId('kanji-badge-月')).toBeInTheDocument();
-    expect(screen.getByTestId('kanji-badge-火')).toBeInTheDocument();
+    expect(screen.getByTestId(`kanji-badge-${kanjiData[0].character}`)).toBeInTheDocument();
+    expect(screen.getByTestId(`kanji-badge-${kanjiData[1].character}`)).toBeInTheDocument();
+    expect(screen.getByTestId(`kanji-badge-${kanjiData[2].character}`)).toBeInTheDocument();
   });
 
   it('displays correct learned count', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [['日', '月', '火'], vi.fn()];
+      if (key === 'completedEntries') {
+        return [[0, 1, 2], vi.fn()];
       }
       return [null, vi.fn()];
     });
@@ -84,12 +84,11 @@ describe('ProgressPage', () => {
   });
 
   it('calculates percentage correctly', () => {
-    // Mock with about half the kanji learned
-    const halfKanji = kanjiData.slice(0, Math.floor(kanjiData.length / 2)).map(k => k.character);
+    const halfIndices = kanjiData.slice(0, Math.floor(kanjiData.length / 2)).map((_, i) => i);
 
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [halfKanji, vi.fn()];
+      if (key === 'completedEntries') {
+        return [halfIndices, vi.fn()];
       }
       return [null, vi.fn()];
     });
@@ -101,10 +100,10 @@ describe('ProgressPage', () => {
     expect(percentage).toBeLessThan(60);
   });
 
-  it('does not show no-kanji message when kanji are learned', () => {
+  it('does not show no-kanji message when entries are completed', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [['日'], vi.fn()];
+      if (key === 'completedEntries') {
+        return [[0], vi.fn()];
       }
       return [null, vi.fn()];
     });

@@ -10,20 +10,17 @@ vi.mock('../hooks/useLocalStorage', () => ({
 import useLocalStorage from '../hooks/useLocalStorage';
 import kanjiData from '../data/kanjiData';
 
-// Create halfKanji based on half the length of kanjiData
-const halfKanji = kanjiData.slice(0, Math.floor(kanjiData.length / 2)).map(k => k.character);
-
 describe('SettingsPage', () => {
-  const mockSetLearnedKanji = vi.fn();
+  const mockSetCompletedEntries = vi.fn();
   const mockSetCustomKanjiList = vi.fn();
 
   beforeEach(() => {
-    mockSetLearnedKanji.mockClear();
+    mockSetCompletedEntries.mockClear();
     mockSetCustomKanjiList.mockClear();
 
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [['日', '月'], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[0, 1], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[], mockSetCustomKanjiList];
@@ -52,7 +49,7 @@ describe('SettingsPage', () => {
     expect(screen.getByTestId('clear-progress-button')).toBeInTheDocument();
   });
 
-  it('displays current learned kanji count', () => {
+  it('displays current completed entries count', () => {
     render(<SettingsPage />);
     expect(screen.getByText(/2 kanji learned/i)).toBeInTheDocument();
   });
@@ -115,13 +112,13 @@ describe('SettingsPage', () => {
     fireEvent.click(screen.getByTestId('clear-progress-button'));
     fireEvent.click(screen.getByTestId('confirm-clear-button'));
 
-    expect(mockSetLearnedKanji).toHaveBeenCalledWith([]);
+    expect(mockSetCompletedEntries).toHaveBeenCalledWith([]);
   });
 
   it('disables clear button when no progress to clear', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [[], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [[], mockSetCustomKanjiList];
@@ -136,8 +133,8 @@ describe('SettingsPage', () => {
 
   it('displays current custom list when set', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [[], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [['食', '水', '火'], mockSetCustomKanjiList];
@@ -153,8 +150,8 @@ describe('SettingsPage', () => {
 
   it('clears custom list when clear custom button is clicked', () => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
-        return [[], mockSetLearnedKanji];
+      if (key === 'completedEntries') {
+        return [[], mockSetCompletedEntries];
       }
       if (key === 'customKanjiList') {
         return [['食', '水'], mockSetCustomKanjiList];

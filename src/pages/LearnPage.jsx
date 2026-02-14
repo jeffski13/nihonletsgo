@@ -17,16 +17,23 @@ const STEPS = {
 };
 
 function LearnPage() {
-  const [learnedKanji, setLearnedKanji] = useLocalStorage('learnedKanji', []);
+  const [completedEntries, setCompletedEntries] = useLocalStorage('completedEntries', []);
   const [customKanjiList] = useLocalStorage('customKanjiList', []);
   const [currentKanji, setCurrentKanji] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
   const [step, setStep] = useState(STEPS.INTRO);
 
   useEffect(() => {
-    const nextKanji = getNextKanji(learnedKanji, customKanjiList);
-    setCurrentKanji(nextKanji);
+    const result = getNextKanji(completedEntries, customKanjiList);
+    if (result) {
+      setCurrentKanji(result.entry);
+      setCurrentIndex(result.index);
+    } else {
+      setCurrentKanji(null);
+      setCurrentIndex(null);
+    }
     setStep(STEPS.INTRO);
-  }, [learnedKanji, customKanjiList]);
+  }, [completedEntries, customKanjiList]);
 
   const handleReadyForQuiz = () => {
     setStep(STEPS.QUIZ);
@@ -45,12 +52,12 @@ function LearnPage() {
   };
 
   const handleMarkLearned = () => {
-    if (currentKanji) {
-      setLearnedKanji(prev => [...prev, currentKanji.character]);
+    if (currentIndex !== null) {
+      setCompletedEntries(prev => [...prev, currentIndex]);
     }
   };
 
-  const stats = getProgressStats(learnedKanji);
+  const stats = getProgressStats(completedEntries);
 
   if (!currentKanji) {
     return (

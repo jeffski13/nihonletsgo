@@ -21,7 +21,7 @@ const renderWithRouter = (initialRoute = '/') => {
 describe('App', () => {
   beforeEach(() => {
     useLocalStorage.mockImplementation((key) => {
-      if (key === 'learnedKanji') {
+      if (key === 'completedEntries') {
         return [[], vi.fn()];
       }
       if (key === 'customKanjiList') {

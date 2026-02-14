@@ -1,35 +1,34 @@
 import kanjiData from '../data/kanjiData';
 
 /**
- * Get the next kanji to learn based on priority:
- * 1. Custom kanji list (if provided and not all learned)
- * 2. Frequency-based list
+ * Get the next kanji entry to learn based on priority:
+ * 1. Custom kanji list (if provided and has uncompleted entries)
+ * 2. Sequential order through kanjiData
  *
- * @param {string[]} learnedKanji - Array of already learned kanji characters
+ * @param {number[]} completedEntries - Array of completed kanjiData indices
  * @param {string[]} customKanjiList - User's custom learning queue
- * @returns {object|null} - The next kanji data object, or null if all learned
+ * @returns {{entry: object, index: number}|null} - The next kanji entry with its index, or null if all completed
  */
-export function getNextKanji(learnedKanji = [], customKanjiList = []) {
-  // If custom list exists and has unlearned kanji
+export function getNextKanji(completedEntries = [], customKanjiList = []) {
+  // If custom list exists, find first uncompleted entry whose character is in the list
   if (customKanjiList.length > 0) {
     for (const char of customKanjiList) {
-      if (!learnedKanji.includes(char)) {
-        const kanjiEntry = kanjiData.find(k => k.character === char);
-        if (kanjiEntry) {
-          return kanjiEntry;
+      for (let i = 0; i < kanjiData.length; i++) {
+        if (kanjiData[i].character === char && !completedEntries.includes(i)) {
+          return { entry: kanjiData[i], index: i };
         }
       }
     }
   }
 
-  // Fall back to frequency-based list
-  for (const kanji of kanjiData) {
-    if (!learnedKanji.includes(kanji.character)) {
-      return kanji;
+  // Fall back to sequential order
+  for (let i = 0; i < kanjiData.length; i++) {
+    if (!completedEntries.includes(i)) {
+      return { entry: kanjiData[i], index: i };
     }
   }
 
-  return null; // All kanji learned
+  return null; // All entries completed
 }
 
 /**
@@ -79,20 +78,32 @@ export function getQuizOptions(correctAnswer, incorrectAnswers) {
 
 /**
  * Calculate learning progress statistics
- * @param {string[]} learnedKanji - Array of learned kanji characters
+ * @param {number[]} completedEntries - Array of completed kanjiData indices
  * @returns {object} - Progress statistics
  */
-export function getProgressStats(learnedKanji = []) {
-  const totalKanji = kanjiData.length;
-  const learnedCount = learnedKanji.length;
-  const percentage = totalKanji > 0 ? Math.round((learnedCount / totalKanji) * 100) : 0;
+export function getProgressStats(completedEntries = []) {
+  const total = kanjiData.length;
+  const learned = completedEntries.length;
+  const percentage = total > 0 ? Math.round((learned / total) * 100) : 0;
 
   return {
-    learned: learnedCount,
-    total: totalKanji,
-    remaining: totalKanji - learnedCount,
+    learned,
+    total,
+    remaining: total - learned,
     percentage
   };
+}
+
+/**
+ * Get unique learned kanji characters from completed entry indices
+ * @param {number[]} completedEntries - Array of completed kanjiData indices
+ * @returns {string[]} - Array of unique kanji characters
+ */
+export function getLearnedCharacters(completedEntries = []) {
+  const chars = completedEntries
+    .map(i => kanjiData[i]?.character)
+    .filter(Boolean);
+  return [...new Set(chars)];
 }
 
 /**

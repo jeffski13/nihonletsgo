@@ -4,7 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { parseCustomKanjiList, isKanjiInData } from '../utils/kanjiUtils';
 
 function SettingsPage() {
-  const [learnedKanji, setLearnedKanji] = useLocalStorage('learnedKanji', []);
+  const [completedEntries, setCompletedEntries] = useLocalStorage('completedEntries', []);
   const [customKanjiList, setCustomKanjiList] = useLocalStorage('customKanjiList', []);
   const [inputValue, setInputValue] = useState(customKanjiList.join(' '));
   const [showClearModal, setShowClearModal] = useState(false);
@@ -38,7 +38,7 @@ function SettingsPage() {
   };
 
   const handleClearProgress = () => {
-    setLearnedKanji([]);
+    setCompletedEntries([]);
     setShowClearModal(false);
     setSaveMessage({
       type: 'success',
@@ -135,13 +135,13 @@ function SettingsPage() {
           </Card.Text>
 
           <div className="mb-3">
-            <strong>Current progress:</strong> {learnedKanji.length} kanji learned
+            <strong>Current progress:</strong> {completedEntries.length} kanji learned
           </div>
 
           <Button
             variant="danger"
             onClick={() => setShowClearModal(true)}
-            disabled={learnedKanji.length === 0}
+            disabled={completedEntries.length === 0}
             data-testid="clear-progress-button"
           >
             Clear All Progress
@@ -156,7 +156,7 @@ function SettingsPage() {
         <Modal.Body>
           <p>Are you sure you want to clear all your learning progress?</p>
           <p className="text-danger fw-bold">
-            This will remove {learnedKanji.length} learned kanji and cannot be undone.
+            This will remove {completedEntries.length} learned kanji and cannot be undone.
           </p>
         </Modal.Body>
         <Modal.Footer>

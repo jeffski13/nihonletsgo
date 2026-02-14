@@ -1,10 +1,11 @@
 import { Container, Card, Row, Col, Badge } from 'react-bootstrap';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { getProgressStats, getKanjiByCharacter } from '../utils/kanjiUtils';
+import { getProgressStats, getLearnedCharacters, getKanjiByCharacter } from '../utils/kanjiUtils';
 
 function ProgressPage() {
-  const [learnedKanji] = useLocalStorage('learnedKanji', []);
-  const stats = getProgressStats(learnedKanji);
+  const [completedEntries] = useLocalStorage('completedEntries', []);
+  const stats = getProgressStats(completedEntries);
+  const learnedKanji = getLearnedCharacters(completedEntries);
 
   return (
     <Container>
