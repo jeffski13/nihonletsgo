@@ -174,6 +174,144 @@ const kanjiData: KanjiEntry[] = [
         { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] }
       ]
     }
+  },
+  {
+    character: "学",
+    meaning: "study, learning",
+    characterReading: "がっ",
+    vocabularyWord: {
+      word: "学こう",
+      reading: "がっこう",
+      meaning: "school",
+      incorrectAnswers: ["hospital", "library", "station"]
+    },
+    example: {
+      sentence: "学こうに先生がいます",
+      sentenceMeaning: "There is a teacher at the school.",
+      incorrectSentenceMeanings: ["There is a student at the school.", "There is no teacher at the school.", "The school is far away."],
+      words: [
+        { text: "学こう", reading: "gakkou", meaning: "school", isNewWord: true, kanjiInWord: ["学"] },
+        { text: "に", reading: "ni", meaning: "at", kanjiInWord: [] },
+        { text: "先生", reading: "sensei", meaning: "teacher", kanjiInWord: ["先", "生"] },
+        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
+        { text: "います", reading: "imasu", meaning: "exists", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "生",
+    meaning: "life, birth",
+    characterReading: "しょう",
+    vocabularyWord: {
+      word: "いっ生",
+      reading: "いっしょう",
+      meaning: "lifetime, whole life",
+      incorrectAnswers: ["one day", "one year", "one moment"]
+    },
+    example: {
+      sentence: "先生はいっ生学んでいます",
+      sentenceMeaning: "The teacher studies for a lifetime.",
+      incorrectSentenceMeanings: ["The teacher studied for a year.", "The student studies for a lifetime.", "The teacher stopped studying."],
+      words: [
+        { text: "先生", reading: "sensei", meaning: "teacher", kanjiInWord: ["先", "生"] },
+        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
+        { text: "いっ生", reading: "isshou", meaning: "lifetime", isNewWord: true, kanjiInWord: ["生"] },
+        { text: "学んでいます", reading: "manandeimasu", meaning: "is studying", kanjiInWord: ["学"] }
+      ]
+    }
+  },
+  {
+    character: "先",
+    meaning: "previous, ahead",
+    characterReading: "さき",
+    vocabularyWord: {
+      word: "先に",
+      reading: "さきに",
+      meaning: "ahead, first",
+      incorrectAnswers: ["later", "behind", "together"]
+    },
+    example: {
+      sentence: "先にいってください",
+      sentenceMeaning: "Please go ahead.",
+      incorrectSentenceMeanings: ["Please come back.", "Please wait here.", "Please go later."],
+      words: [
+        { text: "先に", reading: "sakini", meaning: "ahead", isNewWord: true, kanjiInWord: ["先"] },
+        { text: "いって", reading: "itte", meaning: "go", kanjiInWord: [] },
+        { text: "ください", reading: "kudasai", meaning: "please", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "目",
+    meaning: "eye",
+    characterReading: "もく",
+    vocabularyWord: {
+      word: "目ひょう",
+      reading: "もくひょう",
+      meaning: "goal, target",
+      incorrectAnswers: ["result", "problem", "answer"]
+    },
+    example: {
+      sentence: "わたしの目ひょうは先生です",
+      sentenceMeaning: "My goal is to become a teacher.",
+      incorrectSentenceMeanings: ["My goal is to become a student.", "My teacher has a goal.", "My goal is not clear."],
+      words: [
+        { text: "わたし", reading: "watashi", meaning: "I", kanjiInWord: [] },
+        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
+        { text: "目ひょう", reading: "mokuhyou", meaning: "goal", isNewWord: true, kanjiInWord: ["目"] },
+        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
+        { text: "先生", reading: "sensei", meaning: "teacher", kanjiInWord: ["先", "生"] },
+        { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "人",
+    meaning: "person",
+    characterReading: "じん",
+    vocabularyWord: {
+      word: "にほん人",
+      reading: "にほんじん",
+      meaning: "Japanese person",
+      incorrectAnswers: ["American person", "Chinese person", "Korean person"]
+    },
+    example: {
+      sentence: "あの人はにほん人の先生です",
+      sentenceMeaning: "That person is a Japanese teacher.",
+      incorrectSentenceMeanings: ["That person is an American teacher.", "This person is a Japanese student.", "That person is not Japanese."],
+      words: [
+        { text: "あの", reading: "ano", meaning: "that", kanjiInWord: [] },
+        { text: "人", reading: "hito", meaning: "person", kanjiInWord: ["人"] },
+        { text: "は", reading: "wa", meaning: "(topic marker)", kanjiInWord: [] },
+        { text: "にほん人", reading: "nihonjin", meaning: "Japanese person", isNewWord: true, kanjiInWord: ["人"] },
+        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
+        { text: "先生", reading: "sensei", meaning: "teacher", kanjiInWord: ["先", "生"] },
+        { text: "です", reading: "desu", meaning: "is", kanjiInWord: [] }
+      ]
+    }
+  },
+  {
+    character: "人",
+    meaning: "person",
+    characterReading: "じん",
+    vocabularyWord: {
+      word: "人生",
+      reading: "じんせい",
+      meaning: "life, human life",
+      incorrectAnswers: ["death", "dream", "world"]
+    },
+    example: {
+      sentence: "人生の目ひょうがあります",
+      sentenceMeaning: "I have a goal in life.",
+      incorrectSentenceMeanings: ["I don't have a goal.", "Life has no meaning.", "My life is difficult."],
+      words: [
+        { text: "人生", reading: "jinsei", meaning: "life", isNewWord: true, kanjiInWord: ["人", "生"] },
+        { text: "の", reading: "no", meaning: "(possessive)", kanjiInWord: [] },
+        { text: "目ひょう", reading: "mokuhyou", meaning: "goal", kanjiInWord: ["目"] },
+        { text: "が", reading: "ga", meaning: "(subject marker)", kanjiInWord: [] },
+        { text: "あります", reading: "arimasu", meaning: "exists", kanjiInWord: [] }
+      ]
+    }
   }
 ];
 
