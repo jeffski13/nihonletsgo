@@ -44,6 +44,17 @@ npm run dev
 - React Bootstrap
 - Vite
 
+## ignoring config file
+
+undo ignore: 
+
+git update-index --no-skip-worktree src/config/env.ts
+
+ignore:
+
+git -C ~/dev/nihonletsgo update-index --skip-worktree src/config/env.ts
+
+
 ## Credit
 
 Built with Claude Code
