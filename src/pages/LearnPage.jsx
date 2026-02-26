@@ -80,16 +80,16 @@ function LearnPage() {
     <Container>
       <div className="mb-4">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <span>Progress: {stats.learned} / {stats.total} kanji learned</span>
+          <span>Progress: {stats.learned} / {stats.total} ({stats.percentage}%) kanji learned</span>
           <span data-testid="step-indicator">
             Step {step === STEPS.INTRO ? 1 : step === STEPS.QUIZ ? 2 : step === STEPS.PRONUNCIATION ? 3 : step === STEPS.SENTENCE_QUIZ ? 4 : 5} of 5
           </span>
         </div>
         <ProgressBar
           now={stats.percentage}
-          label={`${stats.percentage}%`}
           data-testid="progress-bar"
         />
+        
       </div>
 
       {step === STEPS.INTRO && (
