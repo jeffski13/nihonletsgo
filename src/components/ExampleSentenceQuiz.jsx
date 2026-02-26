@@ -2,23 +2,23 @@ import { useState, useEffect } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { getSentenceQuizOptions } from '../utils/kanjiUtils';
 
-function ExampleSentenceQuiz({ kanji, onCorrect }) {
+function ExampleSentenceQuiz({ kanji, example, onCorrect }) {
   const [options, setOptions] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
-    if (kanji?.example) {
-      const { sentenceMeaning, incorrectSentenceMeanings } = kanji.example;
+    if (example) {
+      const { sentenceMeaning, incorrectSentenceMeanings } = example;
       setOptions(getSentenceQuizOptions(sentenceMeaning, incorrectSentenceMeanings));
       setSelectedAnswer(null);
       setShowFeedback(false);
       setIsCorrect(false);
     }
-  }, [kanji]);
+  }, [example]);
 
-  if (!kanji) {
+  if (!kanji || !example) {
     return null;
   }
 
@@ -38,7 +38,7 @@ function ExampleSentenceQuiz({ kanji, onCorrect }) {
     setSelectedAnswer(null);
     setShowFeedback(false);
     setIsCorrect(false);
-    const { sentenceMeaning, incorrectSentenceMeanings } = kanji.example;
+    const { sentenceMeaning, incorrectSentenceMeanings } = example;
     setOptions(getSentenceQuizOptions(sentenceMeaning, incorrectSentenceMeanings));
   };
 
@@ -53,7 +53,7 @@ function ExampleSentenceQuiz({ kanji, onCorrect }) {
           style={{ fontSize: '1.75rem', marginBottom: '2rem' }}
           data-testid="sentence-quiz-sentence"
         >
-          {kanji.example.sentence}
+          {example.sentence}
         </div>
 
         <div className="d-grid gap-2" style={{ maxWidth: '500px', margin: '0 auto' }}>
@@ -90,7 +90,7 @@ function ExampleSentenceQuiz({ kanji, onCorrect }) {
             ) : (
               <>
                 <p className="mb-2">
-                  Not quite. The correct meaning is: <strong>{kanji.example.sentenceMeaning}</strong>
+                  Not quite. The correct meaning is: <strong>{example.sentenceMeaning}</strong>
                 </p>
                 <Button variant="outline-danger" onClick={handleRetry} data-testid="sentence-retry-button">
                   Try Again

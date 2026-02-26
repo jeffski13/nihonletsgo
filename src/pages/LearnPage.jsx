@@ -22,15 +22,19 @@ function LearnPage() {
   const [currentKanji, setCurrentKanji] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [step, setStep] = useState(STEPS.INTRO);
+  const [selectedExample, setSelectedExample] = useState(null);
 
   useEffect(() => {
     const result = getNextKanji(completedEntries, customKanjiList);
     if (result) {
       setCurrentKanji(result.entry);
       setCurrentIndex(result.index);
+      const examples = result.entry.examples;
+      setSelectedExample(examples[Math.floor(Math.random() * examples.length)]);
     } else {
       setCurrentKanji(null);
       setCurrentIndex(null);
+      setSelectedExample(null);
     }
     setStep(STEPS.INTRO);
   }, [completedEntries, customKanjiList]);
@@ -105,11 +109,11 @@ function LearnPage() {
       )}
 
       {step === STEPS.SENTENCE_QUIZ && (
-        <ExampleSentenceQuiz kanji={currentKanji} onCorrect={handleSentenceQuizCorrect} />
+        <ExampleSentenceQuiz kanji={currentKanji} example={selectedExample} onCorrect={handleSentenceQuizCorrect} />
       )}
 
       {step === STEPS.EXAMPLE && (
-        <ExampleSentence kanji={currentKanji} onComplete={handleMarkLearned} />
+        <ExampleSentence kanji={currentKanji} example={selectedExample} onComplete={handleMarkLearned} />
       )}
     </Container>
   );

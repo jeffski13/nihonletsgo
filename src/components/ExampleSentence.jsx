@@ -1,12 +1,12 @@
 import { Card, Button } from 'react-bootstrap';
 import HoverWord from './HoverWord';
 
-function ExampleSentence({ kanji, onComplete }) {
-  if (!kanji || !kanji.example) {
+function ExampleSentence({ kanji, example, onComplete }) {
+  if (!kanji || !example) {
     return null;
   }
 
-  const { example, vocabularyWord } = kanji;
+  const { vocabularyWord } = kanji;
 
   return (
     <Card className="text-center">
