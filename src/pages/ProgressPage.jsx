@@ -1,11 +1,12 @@
 import { Container, Card, Row, Col, Badge } from 'react-bootstrap';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { getProgressStats, getLearnedCharacters, getKanjiByCharacter } from '../utils/kanjiUtils';
+import { getProgressStats, getAllKanji } from '../utils/kanjiUtils';
 
 function ProgressPage() {
   const [completedEntries] = useLocalStorage('completedEntries', []);
   const stats = getProgressStats(completedEntries);
-  const learnedKanji = getLearnedCharacters(completedEntries);
+  const allKanji = getAllKanji();
+  const learnedKanji = completedEntries.map(i => allKanji[i]).filter(Boolean);
 
   return (
     <Container>
@@ -57,21 +58,18 @@ function ProgressPage() {
               className="d-flex flex-wrap gap-2"
               data-testid="kanji-grid"
             >
-              {learnedKanji.map((char) => {
-                const kanjiData = getKanjiByCharacter(char);
-                return (
-                  <Badge
-                    key={char}
-                    bg="primary"
-                    className="p-3"
-                    style={{ fontSize: '1.5rem' }}
-                    title={kanjiData ? kanjiData.meaning : ''}
-                    data-testid={`kanji-badge-${char}`}
-                  >
-                    {char}
-                  </Badge>
-                );
-              })}
+              {learnedKanji.map((entry, i) => (
+                <Badge
+                  key={i}
+                  bg="primary"
+                  className="p-3 d-flex flex-column align-items-center"
+                  title={entry.meaning}
+                  data-testid={`kanji-badge-${entry.character}`}
+                >
+                  <span style={{ fontSize: '1.5rem' }}>{entry.character}</span>
+                  <span style={{ fontSize: '0.75rem' }}>{entry.characterReading}</span>
+                </Badge>
+              ))}
             </div>
           )}
         </Card.Body>
