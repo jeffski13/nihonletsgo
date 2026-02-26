@@ -1,4 +1,4 @@
-import { Container, Card, Row, Col, Badge } from 'react-bootstrap';
+import { Container, Card, Row, Col, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { getProgressStats, getAllKanji } from '../utils/kanjiUtils';
 
@@ -59,16 +59,27 @@ function ProgressPage() {
               data-testid="kanji-grid"
             >
               {learnedKanji.map((entry, i) => (
-                <Badge
+                <OverlayTrigger
                   key={i}
-                  bg="primary"
-                  className="p-3 d-flex flex-column align-items-center"
-                  title={entry.meaning}
-                  data-testid={`kanji-badge-${entry.character}`}
+                  placement="top"
+                  overlay={
+                    <Tooltip>
+                      <div>{entry.vocabularyWord.word}</div>
+                      <div style={{ opacity: 0.8 }}>{entry.vocabularyWord.reading}</div>
+                      <div style={{ opacity: 0.8 }}>{entry.vocabularyWord.meaning}</div>
+                    </Tooltip>
+                  }
                 >
-                  <span style={{ fontSize: '1.5rem' }}>{entry.character}</span>
-                  <span style={{ fontSize: '0.75rem' }}>{entry.characterReading}</span>
-                </Badge>
+                  <Badge
+                    bg="primary"
+                    className="p-3 d-flex flex-column align-items-center"
+                    style={{ cursor: 'default' }}
+                    data-testid={`kanji-badge-${entry.character}`}
+                  >
+                    <span style={{ fontSize: '1.5rem' }}>{entry.character}</span>
+                    <span style={{ fontSize: '0.75rem' }}>{entry.characterReading}</span>
+                  </Badge>
+                </OverlayTrigger>
               ))}
             </div>
           )}
