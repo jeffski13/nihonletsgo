@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Alert, ProgressBar } from 'react-bootstrap';
+import { Container, Alert, ProgressBar, Button } from 'react-bootstrap';
 import KanjiIntro from '../components/KanjiIntro';
 import KanjiQuiz from '../components/KanjiQuiz';
 import PronunciationQuiz from '../components/PronunciationQuiz';
@@ -7,6 +7,7 @@ import ExampleSentenceQuiz from '../components/ExampleSentenceQuiz';
 import ExampleSentence from '../components/ExampleSentence';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { getNextKanji, getProgressStats } from '../utils/kanjiUtils';
+import env from '../config/env';
 
 const STEPS = {
   INTRO: 'intro',
@@ -93,8 +94,15 @@ function LearnPage() {
           now={stats.percentage}
           data-testid="progress-bar"
         />
-        
       </div>
+
+      {env.qaMode && (
+        <div className="d-flex justify-content-end mb-3">
+          <Button variant="outline-warning" size="sm" onClick={handleMarkLearned} data-testid="qa-skip-button">
+            [QA] Mark as Learned
+          </Button>
+        </div>
+      )}
 
       {step === STEPS.INTRO && (
         <KanjiIntro kanji={currentKanji} onReady={handleReadyForQuiz} />
